@@ -126,7 +126,7 @@ def get_data(journal_url):
 
 def write_articles_to_doaj_articles_table(articles):
     
-    cnx = mysql.connector.connect(user='root', password=,
+    cnx = mysql.connector.connect(user='root', password='',
                               host='localhost', charset = 'utf8mb4', collation='utf8mb4_unicode_ci',
                               database='OA')
     for article in articles:
@@ -178,7 +178,7 @@ def create_doaj_articles_table():
                 'title', 'pages', 'year', 'journal_title', 'journal_publisher', 
                 'authors', 'subjects'])
 
-    cnx = mysql.connector.connect(user='root', password='CarM5500',
+    cnx = mysql.connector.connect(user='root', password='',
                               host='localhost', charset = 'utf8mb4', collation='utf8mb4_unicode_ci',
                               database='OA')
     
@@ -193,7 +193,7 @@ def create_doaj_articles_table():
 create_doaj_articles_table()
 journals = retrieve_journals()
 
-for journal in journals[6955:]:
+for journal in journals:
     print('Working on %s' % journal)
     journal_url = 'https://doaj.org/api/v1/search/articles/journal:"%s"' % urllib.parse.quote_plus(journal[0])
     articles = get_data( journal_url )
